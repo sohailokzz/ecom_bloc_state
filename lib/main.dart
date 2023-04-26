@@ -2,7 +2,8 @@ import 'package:ecom_bloc/app_blocs.dart';
 import 'package:ecom_bloc/app_events.dart';
 import 'package:ecom_bloc/app_states.dart';
 import 'package:ecom_bloc/pages/welcome/bloc/welcome_blocs.dart';
-import 'package:ecom_bloc/pages/welcome/welcome.dart';
+import 'package:ecom_bloc/route_service/route_name.dart';
+import 'package:ecom_bloc/route_service/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -34,7 +35,8 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(
             primarySwatch: Colors.blue,
           ),
-          home: const Welcome(),
+          initialRoute: RouteName.welcomepage,
+          onGenerateRoute: Routes.generateRoute,
         ),
       ),
     );
