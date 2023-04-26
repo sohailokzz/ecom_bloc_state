@@ -1,8 +1,11 @@
 import 'package:ecom_bloc/app_blocs.dart';
 import 'package:ecom_bloc/app_events.dart';
 import 'package:ecom_bloc/app_states.dart';
+import 'package:ecom_bloc/pages/welcome/bloc/welcome_blocs.dart';
+import 'package:ecom_bloc/pages/welcome/welcome.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() {
   runApp(
@@ -16,14 +19,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => AppBlocs(),
-      child: MaterialApp(
-        title: 'Ecom Bloc',
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
+      create: (context) => WelcomeBloc(),
+      child: ScreenUtilInit(
+        builder: (context, child) => MaterialApp(
+          title: 'Ecom Bloc',
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            primarySwatch: Colors.blue,
+          ),
+          home: const Welcome(),
         ),
-        home: const MyHomePage(),
       ),
     );
   }
