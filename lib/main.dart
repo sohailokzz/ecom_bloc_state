@@ -18,8 +18,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => WelcomeBloc(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => WelcomeBloc(),
+        ),
+        BlocProvider(
+          create: (context) => AppBlocs(),
+        ),
+      ],
       child: ScreenUtilInit(
         builder: (context, child) => MaterialApp(
           title: 'Ecom Bloc',
@@ -65,6 +72,7 @@ class MyHomePage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           FloatingActionButton(
+            heroTag: 'hero1',
             onPressed: () {
               context.read<AppBlocs>().add(
                     DecrementEvent(),
@@ -74,6 +82,7 @@ class MyHomePage extends StatelessWidget {
             child: const Icon(Icons.remove),
           ),
           FloatingActionButton(
+            heroTag: 'hero2',
             onPressed: () {
               context.read<AppBlocs>().add(
                     IncrementEvent(),

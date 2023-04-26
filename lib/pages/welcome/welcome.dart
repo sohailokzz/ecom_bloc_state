@@ -1,5 +1,6 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:ecom_bloc/common/spacing.dart';
+import 'package:ecom_bloc/main.dart';
 import 'package:ecom_bloc/pages/welcome/bloc/welcome_blocs.dart';
 import 'package:ecom_bloc/pages/welcome/bloc/welcome_events.dart';
 import 'package:ecom_bloc/pages/welcome/bloc/welcome_states.dart';
@@ -15,6 +16,8 @@ class Welcome extends StatefulWidget {
 }
 
 class _WelcomeState extends State<Welcome> {
+  PageController pageController = PageController(initialPage: 0);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,6 +30,7 @@ class _WelcomeState extends State<Welcome> {
                 alignment: Alignment.topCenter,
                 children: [
                   PageView(
+                    controller: pageController,
                     onPageChanged: (index) {
                       state.page = index;
                       context.read<WelcomeBloc>().add(
@@ -35,6 +39,7 @@ class _WelcomeState extends State<Welcome> {
                     },
                     children: [
                       PagesDesign(
+                        pageController: pageController,
                         context: context,
                         index: 1,
                         imagePath: 'assets/images/reading.png',
@@ -44,6 +49,7 @@ class _WelcomeState extends State<Welcome> {
                         buttonTitle: 'Next',
                       ),
                       PagesDesign(
+                        pageController: pageController,
                         context: context,
                         index: 2,
                         imagePath: 'assets/images/boy.png',
@@ -53,6 +59,7 @@ class _WelcomeState extends State<Welcome> {
                         buttonTitle: 'Next',
                       ),
                       PagesDesign(
+                        pageController: pageController,
                         context: context,
                         index: 3,
                         imagePath: 'assets/images/man.png',
@@ -95,6 +102,7 @@ class PagesDesign extends StatelessWidget {
   final String imagePath;
   final BuildContext context;
   final String buttonTitle;
+  final PageController pageController;
 
   const PagesDesign({
     super.key,
@@ -104,6 +112,7 @@ class PagesDesign extends StatelessWidget {
     required this.context,
     required this.buttonTitle,
     required this.index,
+    required this.pageController,
   });
 
   @override
@@ -134,35 +143,52 @@ class PagesDesign extends StatelessWidget {
             fontWeight: FontWeight.normal,
           ),
         ),
-        Container(
-          width: 325.w,
-          height: 50.h,
-          margin: EdgeInsets.only(
-            top: 100.h,
-            right: 25.w,
-            left: 25.w,
-          ),
-          decoration: BoxDecoration(
-            color: Colors.blue,
-            borderRadius: BorderRadius.all(
-              Radius.circular(15.w),
+        GestureDetector(
+          onTap: () {
+            if (index < 3) {
+              pageController.animateToPage(
+                index,
+                duration: const Duration(milliseconds: 500),
+                curve: Curves.decelerate,
+              );
+            } else {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => const MyHomePage(),
+                ),
+              );
+            }
+          },
+          child: Container(
+            width: 325.w,
+            height: 50.h,
+            margin: EdgeInsets.only(
+              top: 100.h,
+              right: 25.w,
+              left: 25.w,
             ),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey.withOpacity(0.5),
-                spreadRadius: 1,
-                blurRadius: 2,
-                offset: const Offset(0, 1),
+            decoration: BoxDecoration(
+              color: Colors.blue,
+              borderRadius: BorderRadius.all(
+                Radius.circular(15.w),
               ),
-            ],
-          ),
-          child: Center(
-            child: Text(
-              buttonTitle,
-              style: TextStyle(
-                fontSize: 16.sp,
-                color: Colors.white,
-                fontWeight: FontWeight.normal,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.5),
+                  spreadRadius: 1,
+                  blurRadius: 2,
+                  offset: const Offset(0, 1),
+                ),
+              ],
+            ),
+            child: Center(
+              child: Text(
+                buttonTitle,
+                style: TextStyle(
+                  fontSize: 16.sp,
+                  color: Colors.white,
+                  fontWeight: FontWeight.normal,
+                ),
               ),
             ),
           ),
