@@ -33,6 +33,10 @@ class MyApp extends StatelessWidget {
           title: 'Ecom Bloc',
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
+            appBarTheme: const AppBarTheme(
+              elevation: 0,
+              backgroundColor: Colors.white,
+            ),
             primarySwatch: Colors.blue,
           ),
           initialRoute: RouteName.welcomepage,
