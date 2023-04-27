@@ -1,5 +1,6 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:ecom_bloc/common/spacing.dart';
+import 'package:ecom_bloc/common/values/colors.dart';
 import 'package:ecom_bloc/pages/welcome/bloc/welcome_blocs.dart';
 import 'package:ecom_bloc/pages/welcome/bloc/welcome_events.dart';
 import 'package:ecom_bloc/pages/welcome/bloc/welcome_states.dart';
@@ -21,77 +22,78 @@ class _WelcomeState extends State<Welcome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white,
-        body: BlocBuilder<WelcomeBloc, WelcomeState>(
-          builder: (context, state) {
-            return SizedBox(
-              width: 375.w,
-              child: Stack(
-                alignment: Alignment.topCenter,
-                children: [
-                  PageView(
-                    controller: pageController,
-                    onPageChanged: (index) {
-                      state.page = index;
-                      context.read<WelcomeBloc>().add(
-                            WelcomeEvent(),
-                          );
-                    },
-                    children: [
-                      PagesDesign(
-                        pageController: pageController,
-                        context: context,
-                        index: 1,
-                        imagePath: 'assets/images/reading.png',
-                        title: 'First See Learning',
-                        subTitle:
-                            'Forgot about for of paper all knowledge in one learning',
-                        buttonTitle: 'Next',
-                      ),
-                      PagesDesign(
-                        pageController: pageController,
-                        context: context,
-                        index: 2,
-                        imagePath: 'assets/images/boy.png',
-                        title: 'Connect with everyone',
-                        subTitle:
-                            "Always keep in touch with tutor & friends. Let's get connected.",
-                        buttonTitle: 'Next',
-                      ),
-                      PagesDesign(
-                        pageController: pageController,
-                        context: context,
-                        index: 3,
-                        imagePath: 'assets/images/man.png',
-                        title: 'Always Fascinated Learning',
-                        subTitle:
-                            'Anywhere, Anytime.. The time is your descretion so study whenever you want',
-                        buttonTitle: 'Get Started',
-                      ),
-                    ],
-                  ),
-                  Positioned(
-                    bottom: 70.h,
-                    child: DotsIndicator(
-                      position: state.page.toDouble(),
-                      dotsCount: 3,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      decorator: DotsDecorator(
-                        color: Colors.grey,
-                        activeColor: Colors.blue,
-                        size: const Size.square(8),
-                        activeSize: const Size(20, 8),
-                        activeShape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
-                        ),
+      backgroundColor: Colors.white,
+      body: BlocBuilder<WelcomeBloc, WelcomeState>(
+        builder: (context, state) {
+          return SizedBox(
+            width: 375.w,
+            child: Stack(
+              alignment: Alignment.topCenter,
+              children: [
+                PageView(
+                  controller: pageController,
+                  onPageChanged: (index) {
+                    state.page = index;
+                    context.read<WelcomeBloc>().add(
+                          WelcomeEvent(),
+                        );
+                  },
+                  children: [
+                    PagesDesign(
+                      pageController: pageController,
+                      context: context,
+                      index: 1,
+                      imagePath: 'assets/images/reading.png',
+                      title: 'First See Learning',
+                      subTitle:
+                          'Forgot about for of paper all knowledge in one learning',
+                      buttonTitle: 'Next',
+                    ),
+                    PagesDesign(
+                      pageController: pageController,
+                      context: context,
+                      index: 2,
+                      imagePath: 'assets/images/boy.png',
+                      title: 'Connect with everyone',
+                      subTitle:
+                          "Always keep in touch with tutor & friends. Let's get connected.",
+                      buttonTitle: 'Next',
+                    ),
+                    PagesDesign(
+                      pageController: pageController,
+                      context: context,
+                      index: 3,
+                      imagePath: 'assets/images/man.png',
+                      title: 'Always Fascinated Learning',
+                      subTitle:
+                          'Anywhere, Anytime.. The time is your descretion so study whenever you want',
+                      buttonTitle: 'Get Started',
+                    ),
+                  ],
+                ),
+                Positioned(
+                  bottom: 70.h,
+                  child: DotsIndicator(
+                    position: state.page.toDouble(),
+                    dotsCount: 3,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    decorator: DotsDecorator(
+                      color: AppColors.primaryThreeElementText,
+                      activeColor: AppColors.primaryElement,
+                      size: const Size.square(8),
+                      activeSize: const Size(20, 8),
+                      activeShape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
                       ),
                     ),
-                  )
-                ],
-              ),
-            );
-          },
-        ));
+                  ),
+                )
+              ],
+            ),
+          );
+        },
+      ),
+    );
   }
 }
 
@@ -129,7 +131,7 @@ class PagesDesign extends StatelessWidget {
           title,
           style: TextStyle(
             fontSize: 24.sp,
-            color: Colors.black,
+            color: AppColors.primaryText,
             fontWeight: FontWeight.normal,
           ),
         ),
@@ -139,7 +141,7 @@ class PagesDesign extends StatelessWidget {
           textAlign: TextAlign.center,
           style: TextStyle(
             fontSize: 14.sp,
-            color: Colors.black.withOpacity(0.5),
+            color: AppColors.primarySecondaryElementText,
             fontWeight: FontWeight.normal,
           ),
         ),
@@ -167,7 +169,7 @@ class PagesDesign extends StatelessWidget {
               left: 25.w,
             ),
             decoration: BoxDecoration(
-              color: Colors.blue,
+              color: AppColors.primaryElement,
               borderRadius: BorderRadius.all(
                 Radius.circular(15.w),
               ),

@@ -29,10 +29,40 @@ class _SignInPageState extends State<SignInPage> {
             ),
             66.myPh,
             Padding(
-              padding: EdgeInsets.only(left: 25.w),
+              padding: EdgeInsets.only(
+                left: 25.w,
+                right: 25.w,
+              ),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   builText('Email'),
+                  10.myPh,
+                  buildTextField(
+                    hintText: 'Enter Your Email',
+                    fieldType: 'email',
+                    iconName: 'user',
+                  ),
+                  20.myPh,
+                  builText('Password'),
+                  10.myPh,
+                  buildTextField(
+                    hintText: 'Enter Your Password',
+                    fieldType: 'password',
+                    iconName: 'lock',
+                  ),
+                  20.myPh,
+                  buildForgotPassword(),
+                  60.myPh,
+                  buildLogAndRegButton(
+                    buttonTitle: 'Log In',
+                    buttonType: 'login',
+                  ),
+                  20.myPh,
+                  buildLogAndRegButton(
+                    buttonTitle: 'Register',
+                    buttonType: 'register',
+                  ),
                 ],
               ),
             )
