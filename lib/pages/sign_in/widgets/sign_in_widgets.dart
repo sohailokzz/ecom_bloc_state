@@ -155,40 +155,44 @@ Widget buildForgotPassword() {
 Widget buildLogAndRegButton({
   required String buttonTitle,
   buttonType,
+  void Function()? func,
 }) {
-  return Container(
-    width: 325.w,
-    height: 50.h,
-    decoration: BoxDecoration(
-      color: buttonType == 'login'
-          ? AppColors.primaryElement
-          : AppColors.primaryBackground,
-      borderRadius: BorderRadius.all(
-        Radius.circular(15.w),
-      ),
-      border: Border.all(
+  return GestureDetector(
+    onTap: func,
+    child: Container(
+      width: 325.w,
+      height: 50.h,
+      decoration: BoxDecoration(
         color: buttonType == 'login'
-            ? Colors.transparent
-            : AppColors.primaryFourElementText,
-      ),
-      boxShadow: [
-        BoxShadow(
-          color: Colors.grey.withOpacity(0.1),
-          spreadRadius: 1,
-          blurRadius: 2,
-          offset: const Offset(0, 1),
+            ? AppColors.primaryElement
+            : AppColors.primaryBackground,
+        borderRadius: BorderRadius.all(
+          Radius.circular(15.w),
         ),
-      ],
-    ),
-    child: Center(
-      child: Text(
-        buttonTitle,
-        style: TextStyle(
-          fontSize: 16.sp,
+        border: Border.all(
           color: buttonType == 'login'
-              ? AppColors.primaryBackground
-              : AppColors.primaryText,
-          fontWeight: FontWeight.normal,
+              ? Colors.transparent
+              : AppColors.primaryFourElementText,
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.1),
+            spreadRadius: 1,
+            blurRadius: 2,
+            offset: const Offset(0, 1),
+          ),
+        ],
+      ),
+      child: Center(
+        child: Text(
+          buttonTitle,
+          style: TextStyle(
+            fontSize: 16.sp,
+            color: buttonType == 'login'
+                ? AppColors.primaryBackground
+                : AppColors.primaryText,
+            fontWeight: FontWeight.normal,
+          ),
         ),
       ),
     ),

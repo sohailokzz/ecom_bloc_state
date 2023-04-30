@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:ecom_bloc/common/widgets/reusable_toast.dart';
 import 'package:ecom_bloc/pages/sign_in/bloc/signin_bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -16,8 +19,17 @@ class SignInController {
         final state = context.read<SignInBloc>().state;
         String emailAddress = state.email;
         String password = state.password;
-        if (emailAddress.isEmpty) {}
-        if (password.isEmpty) {}
+        if (emailAddress.isEmpty) {
+          reusableToastMsg(
+            msg: 'You need fill email',
+          );
+          return;
+        }
+        if (password.isEmpty) {
+          reusableToastMsg(
+            msg: 'You need fill Password',
+          );
+        }
 
         try {
           final credential =
@@ -25,14 +37,45 @@ class SignInController {
             email: emailAddress,
             password: password,
           );
-          if (credential.user == null) {}
-          if (!credential.user!.emailVerified) {}
+          if (credential.user == null) {
+            reusableToastMsg(
+              msg: 'User does not exist',
+            );
+          }
+          if (!credential.user!.emailVerified) {
+            reusableToastMsg(
+              msg: 'User not verified',
+            );
+          }
 
           var user = credential.user;
           if (user != null) {
-          } else {}
-        } catch (e) {}
+            log('User exist');
+          } else {
+            reusableToastMsg(
+              msg: 'Not a user of this platform',
+            );
+          }
+        } on FirebaseAuthException catch (e) {
+          if (e.code == 'user-not-found') {
+            reusableToastMsg(
+              msg: 'User not found',
+            );
+          } else if (e.code == 'wrong-password') {
+            reusableToastMsg(
+              msg: 'Wrong password try again',
+            );
+          } else if (e.code == 'invalid-email') {
+            reusableToastMsg(
+              msg: 'Invalid email',
+            );
+          }
+        }
       }
-    } catch (e) {}
+    } catch (e) {
+      reusableToastMsg(
+        msg: e.toString(),
+      );
+    }
   }
 }

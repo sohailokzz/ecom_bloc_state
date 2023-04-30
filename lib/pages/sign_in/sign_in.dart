@@ -1,5 +1,6 @@
 import 'package:ecom_bloc/common/spacing.dart';
 import 'package:ecom_bloc/pages/sign_in/bloc/signin_bloc.dart';
+import 'package:ecom_bloc/pages/sign_in/bloc/signin_controller.dart';
 import 'package:ecom_bloc/pages/sign_in/bloc/signin_events.dart';
 import 'package:ecom_bloc/pages/sign_in/bloc/signin_states.dart';
 import 'package:flutter/material.dart';
@@ -68,6 +69,10 @@ class SignInPage extends StatelessWidget {
                       buildLogAndRegButton(
                         buttonTitle: 'Log In',
                         buttonType: 'login',
+                        func: () {
+                          SignInController(context: context)
+                              .handleSignIn('email');
+                        },
                       ),
                       20.myPh,
                       buildLogAndRegButton(
