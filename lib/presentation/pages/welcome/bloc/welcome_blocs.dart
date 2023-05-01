@@ -1,5 +1,5 @@
-import 'package:ecom_bloc/pages/welcome/bloc/welcome_events.dart';
-import 'package:ecom_bloc/pages/welcome/bloc/welcome_states.dart';
+import 'package:ecom_bloc/presentation/pages/welcome/bloc/welcome_events.dart';
+import 'package:ecom_bloc/presentation/pages/welcome/bloc/welcome_states.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class WelcomeBloc extends Bloc<WelcomeEvent, WelcomeState> {

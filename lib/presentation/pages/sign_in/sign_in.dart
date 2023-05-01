@@ -1,13 +1,14 @@
 import 'package:ecom_bloc/common/spacing.dart';
-import 'package:ecom_bloc/pages/sign_in/bloc/signin_bloc.dart';
-import 'package:ecom_bloc/pages/sign_in/bloc/signin_controller.dart';
-import 'package:ecom_bloc/pages/sign_in/bloc/signin_events.dart';
-import 'package:ecom_bloc/pages/sign_in/bloc/signin_states.dart';
+import 'package:ecom_bloc/presentation/pages/sign_in/bloc/signin_bloc.dart';
+import 'package:ecom_bloc/presentation/pages/sign_in/bloc/signin_controller.dart';
+import 'package:ecom_bloc/presentation/pages/sign_in/bloc/signin_events.dart';
+import 'package:ecom_bloc/presentation/pages/sign_in/bloc/signin_states.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'widgets/sign_in_widgets.dart';
+import '../../../route_service/route_name.dart';
+import '../../widgets/shared_widgets.dart';
 
 class SignInPage extends StatelessWidget {
   const SignInPage({super.key});
@@ -16,7 +17,9 @@ class SignInPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: buildAppBar(),
+      appBar: buildAppBar(
+        title: 'Log In',
+      ),
       body: BlocBuilder<SignInBloc, SignInStates>(
         builder: (context, state) {
           return SingleChildScrollView(
@@ -78,6 +81,12 @@ class SignInPage extends StatelessWidget {
                       buildLogAndRegButton(
                         buttonTitle: 'Register',
                         buttonType: 'register',
+                        func: () {
+                          Navigator.pushNamed(
+                            context,
+                            RouteName.registration,
+                          );
+                        },
                       ),
                     ],
                   ),

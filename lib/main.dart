@@ -1,8 +1,6 @@
 import 'package:ecom_bloc/app_blocs.dart';
 import 'package:ecom_bloc/app_events.dart';
 import 'package:ecom_bloc/app_states.dart';
-import 'package:ecom_bloc/pages/sign_in/bloc/signin_bloc.dart';
-import 'package:ecom_bloc/pages/welcome/bloc/welcome_blocs.dart';
 import 'package:ecom_bloc/route_service/route_name.dart';
 import 'package:ecom_bloc/route_service/routes.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -10,7 +8,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'common/values/colors.dart';
 import 'firebase_options.dart';
+import 'presentation/statemanagement/bloc_provider.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,23 +28,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (context) => WelcomeBloc(),
-        ),
-        BlocProvider(
-          create: (context) => AppBlocs(),
-        ),
-        BlocProvider(
-          create: (context) => SignInBloc(),
-        ),
-      ],
+      providers: AllBlocProvider.allBlocProvider,
       child: ScreenUtilInit(
         builder: (context, child) => MaterialApp(
           title: 'Ecom Bloc',
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
             appBarTheme: const AppBarTheme(
+              iconTheme: IconThemeData(
+                color: AppColors.primaryText,
+              ),
               elevation: 0,
               backgroundColor: Colors.white,
             ),

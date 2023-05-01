@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import 'package:ecom_bloc/common/widgets/reusable_toast.dart';
-import 'package:ecom_bloc/pages/sign_in/bloc/signin_bloc.dart';
+import 'package:ecom_bloc/presentation/pages/sign_in/bloc/signin_bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

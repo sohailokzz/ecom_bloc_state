@@ -1,9 +1,9 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:ecom_bloc/common/spacing.dart';
 import 'package:ecom_bloc/common/values/colors.dart';
-import 'package:ecom_bloc/pages/welcome/bloc/welcome_blocs.dart';
-import 'package:ecom_bloc/pages/welcome/bloc/welcome_events.dart';
-import 'package:ecom_bloc/pages/welcome/bloc/welcome_states.dart';
+import 'package:ecom_bloc/presentation/pages/welcome/bloc/welcome_blocs.dart';
+import 'package:ecom_bloc/presentation/pages/welcome/bloc/welcome_events.dart';
+import 'package:ecom_bloc/presentation/pages/welcome/bloc/welcome_states.dart';
 import 'package:ecom_bloc/route_service/route_name.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

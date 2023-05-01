@@ -1,8 +1,9 @@
 import 'package:ecom_bloc/main.dart';
-import 'package:ecom_bloc/pages/sign_in/sign_in.dart';
-import 'package:ecom_bloc/pages/welcome/welcome.dart';
+import 'package:ecom_bloc/presentation/pages/sign_in/sign_in.dart';
+import 'package:ecom_bloc/presentation/pages/welcome/welcome.dart';
 import 'package:flutter/material.dart';
 
+import '../presentation/pages/registration/registration.dart';
 import 'route_name.dart';
 
 class Routes {
@@ -21,6 +22,11 @@ class Routes {
       case RouteName.signIn:
         return MaterialPageRoute(
           builder: (BuildContext context) => const SignInPage(),
+        );
+
+      case RouteName.registration:
+        return MaterialPageRoute(
+          builder: (BuildContext context) => const RegistrationPage(),
         );
 
       default:
