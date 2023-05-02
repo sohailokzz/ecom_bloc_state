@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:ecom_bloc/presentation/pages/registration/bloc/register_events.dart';
 import 'package:ecom_bloc/presentation/pages/registration/bloc/register_states.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -22,6 +24,7 @@ class RegistrationBlocs extends Bloc<RegistrationEvents, RegistrationStates> {
     UserNameEvent event,
     Emitter<RegistrationStates> emit,
   ) {
+    log('My Username is ${event.userName}');
     emit(
       state.copyWith(
         userName: event.userName,
@@ -33,6 +36,7 @@ class RegistrationBlocs extends Bloc<RegistrationEvents, RegistrationStates> {
     RegEmailEvent event,
     Emitter<RegistrationStates> emit,
   ) {
+    log('My Email is ${event.email}');
     emit(
       state.copyWith(
         email: event.email,
@@ -44,6 +48,7 @@ class RegistrationBlocs extends Bloc<RegistrationEvents, RegistrationStates> {
     RegPasswordEvent event,
     Emitter<RegistrationStates> emit,
   ) {
+    log('My Password is ${event.password}');
     emit(
       state.copyWith(
         password: event.password,
@@ -55,6 +60,7 @@ class RegistrationBlocs extends Bloc<RegistrationEvents, RegistrationStates> {
     RegConfPassEvent event,
     Emitter<RegistrationStates> emit,
   ) {
+    // log('My Confirm Pass is ${event.confirmPassword}');
     emit(
       state.copyWith(
         confirmPassword: event.confirmPassword,
