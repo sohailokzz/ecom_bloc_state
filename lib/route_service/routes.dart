@@ -1,3 +1,4 @@
+import 'package:ecom_bloc/global.dart';
 import 'package:ecom_bloc/main.dart';
 import 'package:ecom_bloc/presentation/pages/dashboard/main_page.dart';
 import 'package:ecom_bloc/presentation/pages/sign_in/sign_in.dart';
@@ -9,8 +10,14 @@ import 'route_name.dart';
 
 class Routes {
   static MaterialPageRoute generateRoute(RouteSettings settings) {
+    bool deviceOpenFirst = Global.storageService.deviceStore();
     switch (settings.name) {
       case RouteName.welcomepage:
+        if (settings.name == RouteName.welcomepage && deviceOpenFirst) {
+          return MaterialPageRoute(
+            builder: (BuildContext context) => const SignInPage(),
+          );
+        }
         return MaterialPageRoute(
           builder: (BuildContext context) => const Welcome(),
         );

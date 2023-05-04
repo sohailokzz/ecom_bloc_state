@@ -1,6 +1,8 @@
 import 'package:dots_indicator/dots_indicator.dart';
+import 'package:ecom_bloc/common/constants.dart';
 import 'package:ecom_bloc/common/spacing.dart';
 import 'package:ecom_bloc/common/values/colors.dart';
+import 'package:ecom_bloc/global.dart';
 import 'package:ecom_bloc/presentation/pages/welcome/bloc/welcome_blocs.dart';
 import 'package:ecom_bloc/presentation/pages/welcome/bloc/welcome_events.dart';
 import 'package:ecom_bloc/presentation/pages/welcome/bloc/welcome_states.dart';
@@ -154,6 +156,10 @@ class PagesDesign extends StatelessWidget {
                 curve: Curves.decelerate,
               );
             } else {
+              Global.storageService.setBool(
+                AppConstant.storagedevicefirsttime,
+                true,
+              );
               Navigator.of(context).pushNamedAndRemoveUntil(
                 RouteName.signIn,
                 (route) => false,
