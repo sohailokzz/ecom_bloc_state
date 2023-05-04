@@ -75,10 +75,6 @@ class SignInPage extends StatelessWidget {
                         func: () {
                           SignInController(context: context)
                               .handleSignIn('email');
-                          Navigator.pushNamed(
-                            context,
-                            RouteName.mainpage,
-                          );
                         },
                       ),
                       20.myPh,

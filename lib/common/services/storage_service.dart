@@ -19,10 +19,26 @@ class StorageService {
     );
   }
 
+  Future<bool> setString(
+    String key,
+    String value,
+  ) async {
+    return await _pref.setString(
+      key,
+      value,
+    );
+  }
+
   bool deviceStore() {
     return _pref.getBool(
           AppConstant.storagedevicefirsttime,
         ) ??
         false;
+  }
+
+  bool getLoggedIn() {
+    return _pref.getString(AppConstant.storageusertokenkey) == null
+        ? false
+        : true;
   }
 }

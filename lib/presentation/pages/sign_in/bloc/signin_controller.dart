@@ -1,7 +1,10 @@
 import 'dart:developer';
 
+import 'package:ecom_bloc/common/constants.dart';
 import 'package:ecom_bloc/common/widgets/reusable_toast.dart';
+import 'package:ecom_bloc/global.dart';
 import 'package:ecom_bloc/presentation/pages/sign_in/bloc/signin_bloc.dart';
+import 'package:ecom_bloc/route_service/route_name.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -51,6 +54,17 @@ class SignInController {
           var user = credential.user;
           if (user != null) {
             log('User exist');
+            Global.storageService.setString(
+              AppConstant.storageusertokenkey,
+              '12345678',
+            );
+
+            if (context.mounted) {
+              Navigator.pushNamed(
+                context,
+                RouteName.mainpage,
+              );
+            }
           } else {
             reusableToastMsg(
               msg: 'Not a user of this platform',

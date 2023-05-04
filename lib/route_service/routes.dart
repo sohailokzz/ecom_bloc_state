@@ -11,9 +11,15 @@ import 'route_name.dart';
 class Routes {
   static MaterialPageRoute generateRoute(RouteSettings settings) {
     bool deviceOpenFirst = Global.storageService.deviceStore();
+    bool isLoggedIn = Global.storageService.getLoggedIn();
     switch (settings.name) {
       case RouteName.welcomepage:
         if (settings.name == RouteName.welcomepage && deviceOpenFirst) {
+          if (isLoggedIn) {
+            return MaterialPageRoute(
+              builder: (BuildContext context) => const MainPage(),
+            );
+          }
           return MaterialPageRoute(
             builder: (BuildContext context) => const SignInPage(),
           );
