@@ -2,14 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../common/values/colors.dart';
+import '../home/home_page.dart';
 
 Widget buildMainPages({
   required int index,
 }) {
   List<Widget> mainPages = [
-    const Center(
-      child: Text('Home'),
-    ),
+    const HomePage(),
     const Center(
       child: Text('Search'),
     ),

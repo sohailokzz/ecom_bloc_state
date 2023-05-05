@@ -17,9 +17,6 @@ class MainPage extends StatelessWidget {
       builder: (context, state) {
         return Scaffold(
           backgroundColor: Colors.white,
-          appBar: AppBar(
-            title: const Text('Main Page'),
-          ),
           body: buildMainPages(
             index: state.index,
           ),
