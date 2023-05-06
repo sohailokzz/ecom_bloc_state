@@ -38,6 +38,14 @@ class HomePage extends StatelessWidget {
                 color: AppColors.primaryText,
               ),
             ),
+            Container(
+              decoration: const BoxDecoration(
+                color: Colors.red,
+                borderRadius: BorderRadius.all(
+                  Radius.circular(18),
+                ),
+              ),
+            )
           ],
         ),
       ),
