@@ -25,6 +25,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: AllBlocProvider.allBlocProvider,
       child: ScreenUtilInit(
+        designSize: const Size(375, 812),
         builder: (context, child) => MaterialApp(
           title: 'Ecom Bloc',
           debugShowCheckedModeBanner: false,
