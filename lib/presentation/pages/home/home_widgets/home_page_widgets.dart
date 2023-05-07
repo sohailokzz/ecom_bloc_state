@@ -194,3 +194,87 @@ Widget sliderMenu({
     ],
   );
 }
+
+Widget menuView() {
+  return Column(
+    children: [
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          _reusableMenuText(
+            text: 'Choose you course',
+          ),
+          GestureDetector(
+            onTap: () {},
+            child: _reusableMenuText(
+              text: 'See all',
+              color: AppColors.primaryThreeElementText,
+              fontsize: 12,
+            ),
+          ),
+        ],
+      ),
+      10.myPh,
+      Row(
+        children: [
+          _resusableSubTitleMenu(text: 'All'),
+          _resusableSubTitleMenu(
+            text: 'Popular',
+            textColor: AppColors.primaryThreeElementText,
+            backGroundColor: Colors.white,
+          ),
+          _resusableSubTitleMenu(
+            text: 'Newest',
+            textColor: AppColors.primaryThreeElementText,
+            backGroundColor: Colors.white,
+          ),
+        ],
+      ),
+    ],
+  );
+}
+
+Container _resusableSubTitleMenu({
+  String? text,
+  Color textColor = AppColors.primaryElementText,
+  Color backGroundColor = AppColors.primaryElement,
+}) {
+  return Container(
+    margin: EdgeInsets.only(
+      right: 20.w,
+    ),
+    padding: EdgeInsets.symmetric(
+      horizontal: 15.w,
+      vertical: 5.h,
+    ),
+    decoration: BoxDecoration(
+      color: backGroundColor,
+      borderRadius: BorderRadius.circular(7.w),
+      border: Border.all(
+        color: backGroundColor,
+      ),
+    ),
+    child: _reusableMenuText(
+      text: text!,
+      color: textColor,
+      fontWeight: FontWeight.normal,
+    ),
+  );
+}
+
+Text _reusableMenuText({
+  String? text,
+  Color color = AppColors.primaryText,
+  int fontsize = 16,
+  FontWeight fontWeight = FontWeight.bold,
+}) {
+  return Text(
+    text!,
+    style: TextStyle(
+      fontSize: fontsize.sp,
+      color: color,
+      fontWeight: fontWeight,
+    ),
+  );
+}

@@ -17,34 +17,38 @@ class HomePage extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: builHomePageAppBar(),
       body: Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: 18.w,
-          ),
-          child: BlocBuilder<HomePageBlocs, HomePageSates>(
-            builder: (context, state) {
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  16.myPh,
-                  buildHomePageText(
-                    text: 'Hello',
-                    color: AppColors.primaryThreeElementText,
-                  ),
-                  5.myPh,
-                  buildHomePageText(
-                    text: 'sohailokzz',
-                  ),
-                  10.myPh,
-                  searchField(),
-                  18.myPh,
-                  sliderMenu(
-                    context: context,
-                    state: state,
-                  ),
-                ],
-              );
-            },
-          )),
+        padding: EdgeInsets.symmetric(
+          horizontal: 18.w,
+        ),
+        child: BlocBuilder<HomePageBlocs, HomePageSates>(
+          builder: (context, state) {
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                16.myPh,
+                buildHomePageText(
+                  text: 'Hello',
+                  color: AppColors.primaryThreeElementText,
+                ),
+                5.myPh,
+                buildHomePageText(
+                  text: 'sohailokzz',
+                ),
+                10.myPh,
+                searchField(),
+                18.myPh,
+                sliderMenu(
+                  context: context,
+                  state: state,
+                ),
+                18.myPh,
+                menuView(),
+                10.myPh,
+              ],
+            );
+          },
+        ),
+      ),
     );
   }
 }
