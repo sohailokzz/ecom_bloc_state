@@ -278,3 +278,52 @@ Text _reusableMenuText({
     ),
   );
 }
+
+Widget courseGirdView() {
+  return Container(
+    padding: EdgeInsets.only(
+      bottom: 12.h,
+      left: 12.w,
+    ),
+    decoration: BoxDecoration(
+      image: const DecorationImage(
+        fit: BoxFit.fill,
+        image: AssetImage(
+          'assets/icons/Image(2).png',
+        ),
+      ),
+      borderRadius: BorderRadius.circular(15.w),
+    ),
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.end,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Best Course for IT',
+          maxLines: 1,
+          overflow: TextOverflow.fade,
+          softWrap: false,
+          textAlign: TextAlign.left,
+          style: TextStyle(
+            fontSize: 11.sp,
+            fontWeight: FontWeight.bold,
+            color: AppColors.primaryElementText,
+          ),
+        ),
+        2.myPh,
+        Text(
+          'Best Flutter Course',
+          maxLines: 1,
+          overflow: TextOverflow.fade,
+          softWrap: false,
+          textAlign: TextAlign.left,
+          style: TextStyle(
+            fontSize: 8.sp,
+            fontWeight: FontWeight.normal,
+            color: AppColors.primaryFourElementText,
+          ),
+        ),
+      ],
+    ),
+  );
+}
