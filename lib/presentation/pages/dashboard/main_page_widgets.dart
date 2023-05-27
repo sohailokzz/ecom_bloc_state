@@ -1,3 +1,4 @@
+import 'package:ecom_bloc/presentation/pages/profile/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -18,9 +19,7 @@ Widget buildMainPages({
     const Center(
       child: Text('Chat'),
     ),
-    const Center(
-      child: Text('Profile'),
-    ),
+    const ProfilePage(),
   ];
 
   return mainPages[index];
