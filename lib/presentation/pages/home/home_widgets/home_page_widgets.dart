@@ -8,6 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../common/values/colors.dart';
+import '../../../widgets/shared_text.dart';
 
 AppBar builHomePageAppBar() {
   return AppBar(
@@ -202,12 +203,12 @@ Widget menuView() {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          _reusableMenuText(
+          reusableBaseText(
             text: 'Choose you course',
           ),
           GestureDetector(
             onTap: () {},
-            child: _reusableMenuText(
+            child: reusableBaseText(
               text: 'See all',
               color: AppColors.primaryThreeElementText,
               fontsize: 12,
@@ -255,26 +256,10 @@ Container _resusableSubTitleMenu({
         color: backGroundColor,
       ),
     ),
-    child: _reusableMenuText(
+    child: reusableBaseText(
       text: text!,
       color: textColor,
       fontWeight: FontWeight.normal,
-    ),
-  );
-}
-
-Text _reusableMenuText({
-  String? text,
-  Color color = AppColors.primaryText,
-  int fontsize = 16,
-  FontWeight fontWeight = FontWeight.bold,
-}) {
-  return Text(
-    text!,
-    style: TextStyle(
-      fontSize: fontsize.sp,
-      color: color,
-      fontWeight: fontWeight,
     ),
   );
 }

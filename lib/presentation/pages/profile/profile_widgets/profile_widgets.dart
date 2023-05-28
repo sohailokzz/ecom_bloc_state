@@ -1,5 +1,6 @@
 import 'package:ecom_bloc/common/spacing.dart';
 import 'package:ecom_bloc/common/values/colors.dart';
+import 'package:ecom_bloc/presentation/widgets/shared_text.dart';
 import 'package:ecom_bloc/route_service/route_name.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -15,13 +16,8 @@ AppBar builProfileAppBar() {
       ),
     ),
     centerTitle: true,
-    title: Text(
-      'Profile',
-      style: TextStyle(
-        color: AppColors.primaryText,
-        fontSize: 16.sp,
-        fontWeight: FontWeight.bold,
-      ),
+    title: reusableBaseText(
+      text: 'Profile',
     ),
     leadingWidth: 40.w,
     actions: [
