@@ -4,8 +4,7 @@ import 'package:ecom_bloc/presentation/pages/home/bloc/home_page_states.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import 'home_widgets/home_page_widgets.dart';
+import 'home_widgets/home_widgets.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});

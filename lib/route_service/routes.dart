@@ -1,5 +1,4 @@
 import 'package:ecom_bloc/global.dart';
-import 'package:ecom_bloc/main.dart';
 import 'package:ecom_bloc/presentation/pages/dashboard/main_page.dart';
 import 'package:ecom_bloc/presentation/pages/profile/settings/settings.dart';
 import 'package:ecom_bloc/presentation/pages/sign_in/sign_in.dart';
@@ -27,11 +26,6 @@ class Routes {
         }
         return MaterialPageRoute(
           builder: (BuildContext context) => const Welcome(),
-        );
-
-      case RouteName.homepage:
-        return MaterialPageRoute(
-          builder: (BuildContext context) => const MyHomePage(),
         );
 
       case RouteName.signIn:

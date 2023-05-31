@@ -1,13 +1,13 @@
 import 'dart:developer';
 
-import 'package:ecom_bloc/common/constants.dart';
+import 'package:ecom_bloc/common/apis/user_api.dart';
+import 'package:ecom_bloc/common/entities/entities.dart';
 import 'package:ecom_bloc/common/widgets/reusable_toast.dart';
-import 'package:ecom_bloc/global.dart';
 import 'package:ecom_bloc/presentation/pages/sign_in/bloc/signin_bloc.dart';
-import 'package:ecom_bloc/route_service/route_name.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 class SignInController {
   final BuildContext context;
@@ -53,18 +53,31 @@ class SignInController {
 
           var user = credential.user;
           if (user != null) {
-            log('User exist');
-            Global.storageService.setString(
-              AppConstant.storageusertokenkey,
-              '12345678',
-            );
+            String? displayName = user.displayName;
+            String? email = user.email;
+            String? id = user.uid;
+            String? photoUrl = user.photoURL;
 
-            if (context.mounted) {
-              Navigator.pushNamed(
-                context,
-                RouteName.mainpage,
-              );
-            }
+            LoginRequestEntity loginRequestEntity = LoginRequestEntity();
+            loginRequestEntity.avatar = photoUrl;
+            loginRequestEntity.name = displayName;
+            loginRequestEntity.open_id = id;
+            loginRequestEntity.email = email;
+            loginRequestEntity.type = 1;
+            log('User exist');
+            asyncPostAllData(loginRequestEntity);
+
+            // Global.storageService.setString(
+            //   AppConstant.storageusertokenkey,
+            //   '12345678',
+            // );
+
+            // if (context.mounted) {
+            //   Navigator.pushNamed(
+            //     context,
+            //     RouteName.mainpage,
+            //   );
+            // }
           } else {
             reusableToastMsg(
               msg: 'Not a user of this platform',
@@ -91,5 +104,16 @@ class SignInController {
         msg: e.toString(),
       );
     }
+  }
+
+  Future<void> asyncPostAllData(LoginRequestEntity loginRequestEntity) async {
+    EasyLoading.show(
+      indicator: const CircularProgressIndicator(),
+      maskType: EasyLoadingMaskType.clear,
+      dismissOnTap: true,
+    );
+    var result = await UserAPI.login(
+      param: loginRequestEntity,
+    );
   }
 }
